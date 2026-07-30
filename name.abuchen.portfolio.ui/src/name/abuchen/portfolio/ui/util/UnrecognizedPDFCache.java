@@ -15,14 +15,14 @@ import org.eclipse.e4.core.di.annotations.Creatable;
 @Singleton
 public class UnrecognizedPDFCache
 {
-    public static final class Entry
+    public static final class CacheEntry
     {
         private final String name;
         private final String extractedText;
         private final String pdfBoxVersion;
         private final Instant capturedAt;
 
-        private Entry(String name, String extractedText, String pdfBoxVersion, Instant capturedAt)
+        private CacheEntry(String name, String extractedText, String pdfBoxVersion, Instant capturedAt)
         {
             this.name = name;
             this.extractedText = extractedText;
@@ -57,12 +57,12 @@ public class UnrecognizedPDFCache
     {
     }
 
-    private final LinkedHashMap<Key, Entry> entries = new LinkedHashMap<>(8, 0.75f, false)
+    private final LinkedHashMap<Key, CacheEntry> entries = new LinkedHashMap<>(8, 0.75f, false)
     {
         private static final long serialVersionUID = 1L;
 
         @Override
-        protected boolean removeEldestEntry(Map.Entry<Key, Entry> eldest)
+        protected boolean removeEldestEntry(Map.Entry<Key, CacheEntry> eldest)
         {
             return size() > MAXIMUM;
         }
@@ -72,10 +72,10 @@ public class UnrecognizedPDFCache
     {
         var k = new Key(name, extractedText);
         entries.remove(k);
-        entries.put(k, new Entry(name, extractedText, pdfBoxVersion, Instant.now()));
+        entries.put(k, new CacheEntry(name, extractedText, pdfBoxVersion, Instant.now()));
     }
 
-    public synchronized List<Entry> getEntries()
+    public synchronized List<CacheEntry> getEntries()
     {
         var list = new ArrayList<>(entries.values());
         Collections.reverse(list);

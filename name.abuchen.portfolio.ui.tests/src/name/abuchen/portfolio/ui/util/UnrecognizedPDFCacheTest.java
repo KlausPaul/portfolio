@@ -23,7 +23,7 @@ public class UnrecognizedPDFCacheTest
         cache.add("doc5", "text5", null);
         cache.add("doc6", "text6", null);
 
-        List<UnrecognizedPDFCache.Entry> entries = cache.getEntries();
+        List<UnrecognizedPDFCache.CacheEntry> entries = cache.getEntries();
         assertThat(entries, hasSize(5));
 
         // doc1 (first added) should have been evicted

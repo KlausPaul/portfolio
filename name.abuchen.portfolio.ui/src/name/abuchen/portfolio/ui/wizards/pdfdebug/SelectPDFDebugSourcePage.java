@@ -24,7 +24,7 @@ import org.eclipse.swt.widgets.FileDialog;
 
 import name.abuchen.portfolio.ui.Messages;
 import name.abuchen.portfolio.ui.util.UnrecognizedPDFCache;
-import name.abuchen.portfolio.ui.util.UnrecognizedPDFCache.Entry;
+import name.abuchen.portfolio.ui.util.UnrecognizedPDFCache.CacheEntry;
 
 @SuppressWarnings("nls")
 public class SelectPDFDebugSourcePage extends WizardPage
@@ -37,7 +37,7 @@ public class SelectPDFDebugSourcePage extends WizardPage
 
     private TableViewer viewer;
 
-    private Entry selectedEntry;
+    private CacheEntry selectedEntry;
     private File selectedFile;
 
     public SelectPDFDebugSourcePage(UnrecognizedPDFCache cache)
@@ -49,7 +49,7 @@ public class SelectPDFDebugSourcePage extends WizardPage
         setPageComplete(false);
     }
 
-    public Entry getSelectedEntry()
+    public CacheEntry getSelectedEntry()
     {
         return selectedEntry;
     }
@@ -84,7 +84,7 @@ public class SelectPDFDebugSourcePage extends WizardPage
             @Override
             public String getText(Object element)
             {
-                return element instanceof Entry e ? e.getName() : "";
+                return element instanceof CacheEntry e ? e.getName() : "";
             }
         });
         tableColumnLayout.setColumnData(nameCol.getColumn(), new ColumnWeightData(70, 200));
@@ -96,7 +96,7 @@ public class SelectPDFDebugSourcePage extends WizardPage
             @Override
             public String getText(Object element)
             {
-                return element instanceof Entry e ? FORMATTER.format(e.getCapturedAt()) : "";
+                return element instanceof CacheEntry e ? FORMATTER.format(e.getCapturedAt()) : "";
             }
         });
         tableColumnLayout.setColumnData(capturedCol.getColumn(), new ColumnWeightData(30, 120));
@@ -105,7 +105,7 @@ public class SelectPDFDebugSourcePage extends WizardPage
 
         viewer.addSelectionChangedListener(event -> {
             var sel = (IStructuredSelection) viewer.getSelection();
-            selectedEntry = sel.isEmpty() ? null : (Entry) sel.getFirstElement();
+            selectedEntry = sel.isEmpty() ? null : (CacheEntry) sel.getFirstElement();
             if (selectedEntry != null)
                 selectedFile = null;
             updatePageComplete();
