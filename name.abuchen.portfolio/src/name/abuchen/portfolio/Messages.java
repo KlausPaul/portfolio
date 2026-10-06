@@ -195,6 +195,7 @@ public class Messages extends NLS
     public static String LabelSearchAll;
     public static String LabelSearchBond;
     public static String LabelSearchCloseEndFund;
+    public static String LabelSearchCommodity;
     public static String LabelSearchCryptoCurrency;
     public static String LabelSearchCurrency;
     public static String LabelSearchETC;
@@ -233,6 +234,8 @@ public class Messages extends NLS
     public static String LabelTradeCalendarTSX;
     public static String LabelTradeCalendarUseDefault;
     public static String LabelTradeCalendarVSE;
+    public static String LabelTradeGroupingCombined;
+    public static String LabelTradeGroupingPerLot;
     public static String LabelTrailTransferFromXtoY;
     public static String LabelTrailWithoutTaxesAndFees;
     public static String LabelTrailXofYShares;
@@ -303,6 +306,8 @@ public class Messages extends NLS
     public static String MsgErrorTradeCollector_NoHoldingsForSell;
     public static String MsgErrorTradeCollector_NoHoldingsForTransfer;
     public static String MsgErrorTransactionAlternativeDocumentRequired;
+    public static String MsgErrorTransactionInboundDeliveryWithoutValue;
+    public static String MsgErrorTransactionIncludedInOtherTransaction;
     public static String MsgErrorTransactionMissingExchangeRateIfInForex;
     public static String MsgErrorTransactionOrderCancellationUnsupported;
     public static String MsgErrorTransactionSkipIfDetailsMissing;

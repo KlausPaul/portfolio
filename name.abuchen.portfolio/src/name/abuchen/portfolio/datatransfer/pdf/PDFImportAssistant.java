@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 
@@ -38,6 +37,7 @@ public class PDFImportAssistant
         extractors.add(new AudiBankPDFExtractor(client));
         extractors.add(new AustrianAnadiBankPDFExtractor(client));
         extractors.add(new AlpacCapitalPDFExtractor(client));
+        extractors.add(new AlpianPDFExtractor(client));
         extractors.add(new ApoBankPDFExtractor(client));
         extractors.add(new AvivaPLCPDFExtractor(client));
         extractors.add(new AyvensBankPDFExtractor(client));
@@ -57,6 +57,7 @@ public class PDFImportAssistant
         extractors.add(new BundesschatzPDFExtractor(client));
         extractors.add(new C24BankGmbHPDFExtractor(client));
         extractors.add(new CetesDirectoPDFExtractor(client));
+        extractors.add(new ChasePDFExtractor(client));
         extractors.add(new ComdirectPDFExtractor(client));
         extractors.add(new CommerzbankPDFExtractor(client));
         extractors.add(new CommSecPDFExtractor(client));
@@ -86,6 +87,7 @@ public class PDFImportAssistant
         extractors.add(new FindependentAGPDFExtractor(client));
         extractors.add(new FinTechGroupBankPDFExtractor(client));
         extractors.add(new FirstradeSecuritiesIncPDFExtractor(client));
+        extractors.add(new FondsdepotBankPDFExtractor(client));
         extractors.add(new FordMoneyPDFExtractor(client));
         extractors.add(new FreiburgerKantonalbankPDFExtractor(client));
         extractors.add(new GenoBrokerPDFExtractor(client));
@@ -103,6 +105,7 @@ public class PDFImportAssistant
         extractors.add(new MeDirectBankPlcPDFExtractor(client));
         extractors.add(new MLPBankingAGPDFExtractor(client));
         extractors.add(new ModenaEstoniaPDFExtractor(client));
+        extractors.add(new MorganStanleyPDFExtractor(client));
         extractors.add(new N26BankAGPDFExtractor(client));
         extractors.add(new NeonSwitzerlandAGPDFExtractor(client));
         extractors.add(new NIBCBankPDFExtractor(client));
@@ -123,6 +126,7 @@ public class PDFImportAssistant
         extractors.add(new QuirinBankAGPDFExtractor(client));
         extractors.add(new RaiffeisenBankgruppePDFExtractor(client));
         extractors.add(new RaisinBankAGPDFExtractor(client));
+        extractors.add(new RelaiPDFExtractor(client));
         extractors.add(new RenaultBankDirektPDFExtractor(client));
         extractors.add(new RevolutLtdPDFExtractor(client));
         extractors.add(new SantanderConsumerBankPDFExtractor(client));
@@ -140,6 +144,7 @@ public class PDFImportAssistant
         extractors.add(new SunrisePDFExtractor(client));
         extractors.add(new SuresseDirektBankPDFExtractor(client));
         extractors.add(new SutorBankGmbHPDFExtractor(client));
+        extractors.add(new SwisscardAECSPDFExtractor(client));
         extractors.add(new SwissquotePDFExtractor(client));
         extractors.add(new SydbankASPDFExtractor(client));
         extractors.add(new TargobankPDFExtractor(client));
@@ -168,19 +173,25 @@ public class PDFImportAssistant
     {
         monitor.beginTask(Messages.PDFMsgExtracingFiles, files.size());
 
-        List<PDFInputFile> inputFiles = files.stream().map(PDFInputFile::new).collect(Collectors.toList());
-
         Map<Extractor, List<Item>> itemsByExtractor = new HashMap<>();
 
         var securityCache = new SecurityCache(client);
 
-        for (PDFInputFile inputFile : inputFiles)
+        for (File file : files)
         {
-            monitor.setTaskName(inputFile.getName());
+            monitor.setTaskName(file.getName());
 
             try
             {
-                inputFile.convertPDFtoText();
+                // text files hold the text previously extracted from a PDF
+                // document (used to debug the extractors without the original
+                // document); they skip the PDF conversion and the fallbacks
+                var isTextFile = PDFInputFile.isTextFile(file);
+
+                var inputFile = isTextFile ? PDFInputFile.fromTextFile(file) : new PDFInputFile(file);
+
+                if (!isTextFile)
+                    inputFile.convertPDFtoText();
 
                 var extracted = false;
 
@@ -197,7 +208,7 @@ public class PDFImportAssistant
                     }
                 }
 
-                if (!extracted)
+                if (!extracted && !isTextFile)
                 {
                     try
                     {
@@ -237,7 +248,8 @@ public class PDFImportAssistant
                     // the text with the version 1 conversion; restore the
                     // PDFBox 3 text so the manual entry view (and any test
                     // cases derived from it) use the latest conversion
-                    inputFile.convertPDFtoText();
+                    if (!isTextFile)
+                        inputFile.convertPDFtoText();
 
                     if (inputFile.getText() != null)
                         failedInputFiles.put(inputFile.getFile(), inputFile);
@@ -245,7 +257,7 @@ public class PDFImportAssistant
             }
             catch (IOException e)
             {
-                errors.computeIfAbsent(inputFile.getFile(), f -> new ArrayList<>()).add(e);
+                errors.computeIfAbsent(file, f -> new ArrayList<>()).add(e);
             }
 
             monitor.worked(1);

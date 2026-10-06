@@ -919,6 +919,7 @@ public class Messages extends NLS
     public static String LabelShowHeadline;
     public static String LabelShowOnlyOneYear;
     public static String LabelShowRawResponse;
+    public static String LabelSiftingAssetClass;
     public static String LabelSmallerSize;
     public static String LabelStartTyping;
     public static String LabelStatementOfAssets;
@@ -946,6 +947,7 @@ public class Messages extends NLS
     public static String LabelTopContributorsReturn;
     public static String LabelTopContributorsValue;
     public static String LabelTotalValuePercent;
+    public static String LabelTradeGrouping;
     public static String LabelTrades;
     public static String LabelTradesBasicStatistics;
     public static String LabelTradesProfitLoss;
@@ -967,6 +969,7 @@ public class Messages extends NLS
     public static String LabelUnknown;
     public static String LabelUnnamedFile;
     public static String LabelUnnamedXml;
+    public static String LabelUpdateAvailableShort;
     public static String LabelUpdatedConfiguration;
     public static String LabelUpdatesAvailable;
     public static String LabelUseExistingSecurity;
@@ -1160,7 +1163,6 @@ public class Messages extends NLS
     public static String MsgInstrumentWithConfigurationIssue;
     public static String MsgInvalidImage;
     public static String MsgInvalidImageDetail;
-    public static String MsgJavaVersionTooOldForLetsEncrypt;
     public static String MsgLoadingFile;
     public static String MsgMissingAccount;
     public static String MsgMissingPortfolio;
@@ -1190,7 +1192,6 @@ public class Messages extends NLS
     public static String MsgUpdateNewInVersionX;
     public static String MsgUpdateNoWritePermissions;
     public static String MsgUpdateRequiresLatestJavaVersion;
-    public static String MsgUpdateRunning32BitOn64BitOS;
     public static String MsgUpdatingDashboardData;
     public static String MsgUpdatingExchangeRates;
     public static String MsgWarningPieChartNoValues;
@@ -1283,6 +1284,7 @@ public class Messages extends NLS
     public static String PrefDescriptionPortfolioReport;
     public static String PrefDescriptionProxy;
     public static String PrefDescriptionQuandl;
+    public static String PrefDescriptionSifting;
     public static String PrefDescriptionTwelveData;
     public static String PrefDivvyDiaryAPIKey;
     public static String PrefEODHistoricalDataAPIKey;
@@ -1322,6 +1324,7 @@ public class Messages extends NLS
     public static String PrefTitleDivvyDiary;
     public static String PrefTitleEODHistoricalData;
     public static String PrefTitleExperimentalFeatures;
+    public static String PrefSiftingAPIKey;
     public static String PrefTitleFinnhub;
     public static String PrefTitleFormatting;
     public static String PrefTitleGeneral;
@@ -1332,6 +1335,7 @@ public class Messages extends NLS
     public static String PrefTitlePresentation;
     public static String PrefTitleProxy;
     public static String PrefTitleQuandl;
+    public static String PrefTitleSifting;
     public static String PrefTitleTwelveData;
     public static String PrefTwelveDataAPIKey;
     public static String PrefUpdateQuotesAfterFileOpen;

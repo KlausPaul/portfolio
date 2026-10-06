@@ -37,6 +37,58 @@
 	    <keyword>investment</keyword>
   </keywords>
   <releases>
+    <release version="0.88.0" date="2026-10-04">
+      <description>
+        <ul>
+          <li>New: Sifting is now available as an online provider for historical prices.</li>
+          <li>New: PDF importers for Alpian, Chase, Fondsdepot Bank, Morgan Stanley, Relai and Swisscard AECS.</li>
+          <li>New: The lists of deposit accounts, securities accounts and savings plans can be exported to CSV.</li>
+          <li>Improvement: Enhanced PDF importers for 1822direkt, 3 Banken, Advanzia Bank, Baader Bank, Bison, Consorsbank, DEGIRO, DZ Bank, Hello Bank, HypoVereinsbank, Hypothekarbank Lenzburg, ING-DiBa, LGT Bank, Liberty Vorsorge, Merkur Privatbank, MLP Banking, N26, Norddeutsche Landesbank, Oldenburgische Landesbank, Pictet, Postbank, Questrade, Quirin Privatbank, Schelhammer Capital Bank, Sutor Bank, Swissquote, Tradegate, UBS, Union Investment, V-Bank, Vanguard, VDK Bank, Volksbank, VZ VermögensZentrum, Weberbank and Zürcher Kantonalbank.</li>
+          <li>Improvement: The Yahoo Finance exchange picker now shows a label for FTSE Global Index quotes (.FGI).</li>
+          <li>Improvement: Converting a transaction now keeps the source it was imported from (for example, a buy into a delivery).</li>
+          <li>Fix: Historical prices from AMFI India load again after the provider changed its data format.</li>
+          <li>Fix: Yahoo Finance now uses the correct exchange code for the Saudi Stock Exchange (.SR).</li>
+          <li>Fix: The price preview for the MFAPI quote feed now updates when the scheme code changes.</li>
+          <li>Fix: The main tab area can no longer be detached by accident.</li>
+          <li xml:lang="de">Neu: Sifting steht jetzt als Online-Anbieter für historische Kurse zur Verfügung.</li>
+          <li xml:lang="de">Neu: PDF-Importer für Alpian, Chase, Fondsdepot Bank, Morgan Stanley, Relai und Swisscard AECS.</li>
+          <li xml:lang="de">Neu: Die Listen der Konten, Depots und Sparpläne lassen sich als CSV exportieren.</li>
+          <li xml:lang="de">Verbesserung: PDF-Importer für 1822direkt, 3 Banken, Advanzia Bank, Baader Bank, Bison, Consorsbank, DEGIRO, DZ Bank, Hello Bank, HypoVereinsbank, Hypothekarbank Lenzburg, ING-DiBa, LGT Bank, Liberty Vorsorge, Merkur Privatbank, MLP Banking, N26, Norddeutsche Landesbank, Oldenburgische Landesbank, Pictet, Postbank, Questrade, Quirin Privatbank, Schelhammer Capital Bank, Sutor Bank, Swissquote, Tradegate, UBS, Union Investment, V-Bank, Vanguard, VDK Bank, Volksbank, VZ VermögensZentrum, Weberbank und Zürcher Kantonalbank wurden verbessert.</li>
+          <li xml:lang="de">Verbesserung: Die Auswahl der Börsenplätze bei Yahoo Finance zeigt jetzt eine Bezeichnung für Kurse des FTSE Global Index (.FGI).</li>
+          <li xml:lang="de">Verbesserung: Beim Umwandeln einer Buchung (zum Beispiel eines Kaufs in eine Einlieferung) bleibt die Quelle des Imports jetzt erhalten.</li>
+          <li xml:lang="de">Fehlerbehebung: Historische Kurse von AMFI India werden wieder geladen, nachdem der Anbieter sein Datenformat geändert hat.</li>
+          <li xml:lang="de">Fehlerbehebung: Yahoo Finance verwendet jetzt das korrekte Börsenkürzel für die saudische Börse (.SR).</li>
+          <li xml:lang="de">Fehlerbehebung: Die Kursvorschau für den Anbieter MFAPI wird jetzt aktualisiert, wenn sich der Scheme Code ändert.</li>
+          <li xml:lang="de">Fehlerbehebung: Der Hauptbereich mit den Registerkarten lässt sich nicht mehr versehentlich abdocken.</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.87.0" date="2026-08-16">
+      <description>
+        <ul>
+          <li>New: Trades can now be grouped by lot: each purchase creates its own trade, and sales are split across the lots they close.</li>
+          <li>New: Categories in the statement of assets can be collapsed and expanded; the collapsed state is remembered per file and taxonomy.</li>
+          <li>New: The line width in the historical price chart can now be set to 1, 2, or 3 pixels via the chart menu.</li>
+          <li>Improvement: Enhanced PDF importers for Barclays Bank Ireland, comdirect, Consorsbank, DAB, Raiffeisen Bankengruppe, and Trade Republic.</li>
+          <li>Improvement: The title of the Trades view now reflects the selected accounts and portfolios.</li>
+          <li>Fix: Importing a large number of PDF documents no longer fails with a "No more handles" error.</li>
+          <li>Fix: Searching for a new instrument no longer aborts with an error when a search provider returns an unexpected answer.</li>
+          <li>Fix: Trades now use the exchange rate recorded on the transaction instead of the daily rate.</li>
+          <li>Fix: Fixed a sporadic error in the portfolio balance chart when it was updated twice in quick succession.</li>
+          <li>Fix: The donut chart now sorts consistently with the pie chart.</li>
+          <li xml:lang="de">Neu: Trades können jetzt je Zugang gruppiert werden: Jeder Kauf erzeugt einen eigenen Trade, und Verkäufe werden auf die Zugänge aufgeteilt, die dadurch geschlossen werden.</li>
+          <li xml:lang="de">Neu: Kategorien in der Vermögensaufstellung lassen sich ein- und ausklappen; der eingeklappte Zustand wird pro Datei und Klassifizierung gespeichert.</li>
+          <li xml:lang="de">Neu: Die Linienbreite im Kursdiagramm eines Wertpapiers lässt sich jetzt über das Diagramm-Menü auf 1, 2 oder 3 Pixel einstellen.</li>
+          <li xml:lang="de">Verbesserung: PDF-Importer für Barclays Bank Ireland, comdirect, Consorsbank, DAB, Raiffeisen Bankengruppe und Trade Republic wurden verbessert.</li>
+          <li xml:lang="de">Verbesserung: Der Titel der Trades-Ansicht berücksichtigt jetzt die ausgewählten Konten und Depots.</li>
+          <li xml:lang="de">Fehlerbehebung: Der Import vieler PDF-Dokumente schlägt nicht mehr mit dem Fehler "No more handles" fehl.</li>
+          <li xml:lang="de">Fehlerbehebung: Die Suche nach einem neuen Wertpapier bricht nicht mehr ab, wenn ein Suchanbieter eine unerwartete Antwort liefert.</li>
+          <li xml:lang="de">Fehlerbehebung: Trades verwenden jetzt den in der Buchung hinterlegten Wechselkurs statt des Tageskurses.</li>
+          <li xml:lang="de">Fehlerbehebung: Ein sporadischer Fehler im Diagramm zum Depotbestand wurde behoben, der auftrat, wenn es zweimal kurz hintereinander aktualisiert wurde.</li>
+          <li xml:lang="de">Fehlerbehebung: Das Donut-Diagramm sortiert jetzt wie das Kreisdiagramm.</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.86.1" date="2026-07-30">
       <description>
         <ul>
